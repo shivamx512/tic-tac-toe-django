@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %} Game list {% endblock %}
+{% block content %}
+<div class="container">
+
+    <div class="jumbotron">
+       <h1>Welcome Game Create page! </h1> 
+    </div>
+    <div>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Create Game</button>
+        </form>
+    </div>
+</div>
+
+{% endblock %}

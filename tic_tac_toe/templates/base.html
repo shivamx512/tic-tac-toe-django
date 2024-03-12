@@ -11,8 +11,47 @@
 
         <title>{% block title%}{% endblock%}</title>
         <style type="text/css">
+            .tic-tac-toe {
+                border-collapse: collapse;
+            }
+
+            .tic-tac-toe td {
+                border: 1px solid #000;
+                width: 100px;
+                height: 100px;
+                text-align: center;
+                vertical-align: middle;
+                font-size: 24px;
+            }
+
+            .tic-tac-toe td:hover {
+                background-color: #f0f0f0;
+                cursor: pointer;
+            }
 
         </style>
+        <script>
+            function makeApiCall(cell_id) {
+                 // Create a new FormData object
+                var formData = new FormData();
+                // Add data to the FormData object (if needed)
+                formData.append('cell_id', cell_id);
+                // Send the POST request
+                fetch('board_update/', {
+                    method: 'POST',
+                    body: formData
+                })
+                .then(response => response.json())
+                .then(data => {
+                    console.log(data);
+                    alert(data.message);
+                    window.location.reload();
+                    // Process the response here
+                })
+                .catch(error => console.error('Error:', error));
+            }
+        
+        </script>
       </head>
   <body>
       <section class="container">
@@ -22,7 +61,10 @@
             </li>
             {% if user.is_authenticated %}
             <li class="nav-item">
-                <a class="nav-link" href="{% url 'login' %}">Game</a>
+                <a class="nav-link" href="{% url 'game_list' %}">Game list</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'game_create' %}">Game create</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="{% url 'logout' %}">Logout</a>

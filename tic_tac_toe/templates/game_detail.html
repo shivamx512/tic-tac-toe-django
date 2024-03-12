@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %} Game detail page {% endblock %}
+{% block content %}
+<div class="container">
+
+    <div class="jumbotron">
+       <h1>Welcome Game Detail page! </h1> 
+    </div>
+    <div class="jumbotron" >
+        {% if game.winner %}
+        <h3> Winner is : {{ game.winner }}</h3>
+        {% endif %}
+    </div>
+    <div>
+        <div class="p-3 m-3">
+            <table class="table table-bordered tic-tac-toe">
+                <thead>
+                    <tr style="display: none;">
+                      <th></th>
+                      <th></th>
+                      <th></th>
+                    </tr>
+                    <tbody>
+                        <tr>
+                            <td onclick="makeApiCall('cell_00')">{{ game.board.cell_00 }}</td>
+                            <td onclick="makeApiCall('cell_01')">{{ game.board.cell_01 }}</td>
+                            <td onclick="makeApiCall('cell_02')">{{ game.board.cell_02 }}</td>
+                        </tr>
+                        <tr>
+                            <td onclick="makeApiCall('cell_10')">{{ game.board.cell_10 }}</td>
+                            <td onclick="makeApiCall('cell_11')">{{ game.board.cell_11 }}</td>
+                            <td onclick="makeApiCall('cell_12')">{{ game.board.cell_12 }}</td>
+                        </tr>
+                        <tr>
+                            <td onclick="makeApiCall('cell_20')">{{ game.board.cell_20 }}</td>
+                            <td onclick="makeApiCall('cell_21')">{{ game.board.cell_21 }}</td>
+                            <td onclick="makeApiCall('cell_22')">{{ game.board.cell_22 }}</td>
+                        </tr>
+                    </tbody>
+                  </thead>
+            </table>
+        </div>
+    </div>
+    <div>
+        <p>Name: {{ game.name }}</p>
+        <p>Player X: {{ game.player_x }}</p>
+        <p>Player O: {{ game.player_o }}</p>
+        <p>current User : {{request.user }}</p>
+        <p>Winner: {{ game.winner }}</p>
+        <p>Status: {{ game.status }}</p>
+        <p>Last Entry By: {{ game.last_entry_by }}</p>
+        <p>Created At: {{ game.created_at }}</p>
+        <p>Updated At: {{ game.updated_at }}</p>
+    </div>
+
+    <div>
+        <h3>Move details</h3>
+        {% for move in moves %}
+         <p> Move by {{move.player.username }} at row {{move.row}}, col {{move.col}}" </p>
+        {% endfor %}
+    </div>
+
+   
+</div>
+
+{% endblock %}

@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %} Game list {% endblock %}
+{% block content %}
+<div class="container">
+
+    <div class="jumbotron">
+       <h1>Welcome Game list page! </h1> 
+    </div>
+    <div>
+        <table class="table table-bordered table-hover m-3 p-3">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Player X</th>
+                <th>Player O</th>
+                <th>Winner</th>
+                <th>Status</th>
+                <th>Last Entry By</th>
+                <th>Created At</th>
+                <th>Updated At</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for game in games %}
+              <tr>
+                <td> <a href="{% url 'game_detail' game.pk %}">{{ game.name }}</a></td>
+                <td>{{ game.player_x }}</td>
+                <td>{{ game.player_o }}</td>
+                <td>{{ game.winner }}</td>
+                <td>{{ game.status }}</td>
+                <td>{{ game.last_entry_by }}</td>
+                <td>{{ game.created_at }}</td>
+                <td>{{ game.updated_at }}</td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+    </div>
+</div>
+
+{% endblock %}
