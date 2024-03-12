@@ -1,7 +1,18 @@
-from django.http import JsonResponse
+from rest_framework.permissions import AllowAny
+from rest_framework import viewsets
 
-def borad_update_api_view(request):
-    # Your API logic here
-    print('>>> request type', request.method)
-    data = {'message': 'API call successful'}
-    return JsonResponse(data)
+
+from game.models import Game, User
+from .serializers import GameSerializer
+
+
+class GameViewSet(viewsets.ModelViewSet):
+    """
+    This ViewSet automatically provides `list`, `create`, `retrieve`,
+    `update` and `destroy` actions.
+
+    Additionally we also provide an extra `highlight` action.
+    """
+    queryset = Game.objects.all()
+    serializer_class = GameSerializer
+    permission_classes = (AllowAny, )

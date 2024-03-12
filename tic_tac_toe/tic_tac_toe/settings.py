@@ -41,6 +41,7 @@ DEFAULT_APPS = [
 ]
 
 REST_FRMW_APPS = [
+    "rest_framework"
 ]
 
 PROJECT_APPS = [

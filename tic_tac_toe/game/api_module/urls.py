@@ -1,6 +1,11 @@
-from django.urls import path
-from .views import borad_update_api_view
+from django.urls import path, include
+from .views import GameViewSet
+from rest_framework import routers
+
+app_router = routers.DefaultRouter(trailing_slash=False)
+
+app_router.register('game', GameViewSet)
 
 urlpatterns = [
-    path('board_update/', borad_update_api_view, name='board_api_update'),
+    path('', include(app_router.urls))
 ]
