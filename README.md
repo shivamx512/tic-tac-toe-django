@@ -11,13 +11,13 @@ Simple tic tac toe game using Django with Docker Compose for easy development an
 1. Clone this repository:
 
     ```bash
-    git clone https://github.com/your_username/your_project.git
+    git clone https://github.com/shivamx512/tic-tac-toe-django
     ```
 
 2. Navigate to the project directory:
 
     ```bash
-    cd your_project
+    cd tic_tac_toe
     ```
 
 3. Build and start the Docker containers:
@@ -28,7 +28,7 @@ Simple tic tac toe game using Django with Docker Compose for easy development an
 
 4. Access the Django application:
 
-    Open your web browser and go to (http://[localhost:8000](http://0.0.0.0:8000/))
+    Open your web browser and go to http://0.0.0.0:8000/
 
 5. To stop the containers, press `Ctrl + C` in the terminal where `docker-compose` is running.
 
