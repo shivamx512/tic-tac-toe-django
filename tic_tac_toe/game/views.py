@@ -8,7 +8,7 @@ from django.views.decorators.csrf import csrf_exempt
 
 from .forms import SignUpForm, LoginForm
 from .models import Game, Move, TicTacToeBoard
-from .utils import check_winner
+from .utils import check_winner, is_draw_move
 
 
 # user auth views 
@@ -139,6 +139,13 @@ def board_view_update(request, pk):
         if is_winning_move:
             game.winner = request.user
             game.status = 'Completed'
+        else:
+            if is_draw_move(game.board):
+                game.status = 'Draw'
+            else:
+                if game.status == 'Inactive':
+                    game.status = 'Active'
+
         game.save()
 
     data = {'message': 'Value updated successfuly'}

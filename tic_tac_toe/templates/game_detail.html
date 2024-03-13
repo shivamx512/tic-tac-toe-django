@@ -8,6 +8,7 @@
        <h1>Welcome Game Detail page! </h1> 
     </div>
     <div class="jumbotron" >
+        <h3>Game status : {{game.status}}</h3>
         {% if game.winner %}
         <h3> Winner is : {{ game.winner }}</h3>
         {% endif %}
