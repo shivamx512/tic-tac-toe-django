@@ -97,6 +97,10 @@ def board_view_update(request, pk):
         data = {'message': "Game is completed, you can't continue"}
         return JsonResponse(data)
     
+    if game.status == "Draw":
+        data = {'message': "Game is Draw, you can't continue"}
+        return JsonResponse(data)
+    
     if game.last_entry_by == request.user:
         data = {'message': "you are not allowed to play other turn, wait for your turn"}
         return JsonResponse(data)
